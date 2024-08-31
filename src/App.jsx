@@ -1,11 +1,25 @@
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import DataItem from "./Components/Data"
+import StudentInfo from "./Components/StudentInfo"
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <DataItem />,
+      
+    },
+
+    {
+      path: '/info/:id',
+      element: <StudentInfo />
+    }
+  ])
 
   return (
     <>
-      <h1 className=" text-red-600">HELLO TAILWIND</h1>
+      <RouterProvider router={router} />
     </>
   )
 }
