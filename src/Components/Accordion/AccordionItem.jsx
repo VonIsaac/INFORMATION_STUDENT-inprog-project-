@@ -10,7 +10,7 @@ const AccordionItem = ({title, children, className, id}) => {
         
     return(
         <li className={className}>
-            <h1 onClick={() => toggleContext(id)} className=" my-2 font-bold text-lg uppercase cursor-pointer">{title}</h1>
+            <h1 onClick={() => toggleContext(id)} className=" mt-2 text-center mx-16  font-bold text-2xl uppercase cursor-pointer">{title}</h1>
             <div className={isOpen ? 'accordion-item-content open':'accordion-item-content close'}>{children}</div>
         </li>
     )

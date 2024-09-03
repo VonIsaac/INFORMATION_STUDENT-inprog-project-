@@ -16,7 +16,7 @@ export const itemData = [
         sex: "Male",
         birthday: "March 23, 2004",
         address: "Fourth Estate Paranque City",
-        aboutme: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, error!"
+        aboutMe: "Lorem, ipsum dolor sit amet"
 
     },
 
@@ -40,7 +40,7 @@ export const itemData = [
         sex: "Male",
         birthday: "August 27, 2003",
         address: "Tunasan, Muntinlupa City",
-        aboutMe: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, error!"
+        aboutMe: "I like  playing basketball  and road trips using my motorcycle."
     },
 
     {
@@ -50,7 +50,7 @@ export const itemData = [
         age: 20,
         sex: "Male",
         birthday: "July 16 2004",
-        address: "Paranque City",
+        address: "Summit ville Putatan, Muntinlupa City",
         aboutMe: "sana pumasa kay sir hubert"
     },
 

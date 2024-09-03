@@ -37,13 +37,12 @@ body{
 }*/
 
 .accordion {
-  margin: 2rem 0;
 
   border-radius: 6px;
   overflow: hidden;
   list-style: none;
   margin: 0;
-  padding: 0;
+ 
 }
 
 .accordion-item {
@@ -52,7 +51,7 @@ body{
 
 .accordion-item-title {
   margin: 0;
-  padding: 1rem;
+  
   
   cursor: pointer;
   font-size: 1.15rem;
@@ -61,7 +60,7 @@ body{
 
 .accordion-item-content {
  
-  padding: 1rem;
+ 
 }
 
 .close{

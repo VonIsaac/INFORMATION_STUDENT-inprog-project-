@@ -20,7 +20,7 @@ const StudentInfo = () => {
 
 
 
-    const classes = " bg-neutral-900 text-stone-400 px-2 py-1 uppercase font-bold rounded hover:bg-slate-900 hover:text-slate-300"
+    const classes = " mt-2 bg-neutral-900 text-stone-400 px-2 py-1 uppercase font-bold rounded hover:bg-slate-900 hover:text-slate-300"
     return(
         <main className=" flex justify-center items-center h-screen ">
            <div className=" bg-neutral-600 px-3 py-2 rounded-lg shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">                   
@@ -39,7 +39,7 @@ const StudentInfo = () => {
                             <Accordion  className= "accordion">
                                 <AccordionItem id="local-info"  title="Interesting about me">
                                     <article >
-                                        <h1 className=" text-zinc-950 text-lg font-bold my-3">{isData.aboutMe}</h1>
+                                        <h1 className=" text-zinc-950 text-lg font-bold text-center  ">{isData.aboutMe}</h1>
                                     </article>
                                 </AccordionItem>
                             </Accordion>
