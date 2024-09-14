@@ -1,25 +1,30 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import DataItem from "./Components/Data"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import StudentInfo from "./Components/StudentInfo"
+
 
 function App() {
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <DataItem />,
-      
-    },
+  const queryClients = new QueryClient()
 
+  const router = createBrowserRouter([
+    
     {
-      path: '/info/:id',
+      path: '/getUsers',
+      element: <DataItem />,
+    },
+    {
+      path: '/getUsers/:id',
       element: <StudentInfo />
     }
   ])
 
   return (
     <>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClients}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
   )
 }

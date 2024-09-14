@@ -1,9 +1,29 @@
-import { itemData } from "../util/data.js"
-import { Link } from "react-router-dom"
+//import { itemData } from "../util/data.js"
+import { useQuery } from "@tanstack/react-query"
+import {  handleSelectImage} from "../util/http.js"
+import ImagePicker from "../UI/ImagesPicker.jsx"
 
 
 const DataItem = () => {
     const classes = " text-zinc-500 font-bold bg-gray-900 px-2 py-1 rounded-md uppercase hover:bg-slate-950 hover:text-stone-400"
+    const {data, isLoading, isError} = useQuery({
+        queryKey: ['getUsers-data'],
+        queryFn:  handleSelectImage
+        
+    })
+
+    console.log(`Fetching the ${data}?`)
+
+    let content;
+
+    if(isLoading){
+        content =  <p className=" text-center font-extrabold text-2xl text-gray-600">Fetching Student Data....</p>
+    }
+
+    if(isError){
+        content =  <h1 className=" text-center text-5xl font-bold text text-gray-600">AN ERROR OCCURED</h1>
+    }
+    
     return(
         <>
             <header className=" flex justify-center items-center text-white flex-col my-9 font-mono">
@@ -17,22 +37,7 @@ const DataItem = () => {
             </header>
 
             <main className=" mx-10 ">
-                <ul className=" grid grid-rows-4 grid-flow-col gap-5 ">
-                    {/* mapping all data */}
-                    {itemData.map((data,index) => (
-                        <li key={data.id} className=" flex justify-center items-center my-3 p-3 mx-[10rem] bg-stone-800 w-[30rem] h-[25rem] rounded-md">
-                            <div >
-                                <img src={data.img} alt={data.name} className=" w-[15rem] rounded" />
-                                 <h1 className=" my-4 text-center text-stone-500 font-bold text-xl">{data.name}</h1>
-                                <div className=" flex justify-center items-center">
-                                    <Link to={`/info/${data.id}`} className={classes}>
-                                        View Details
-                                    </Link>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+               <ImagePicker data={data} content={content} className={classes} />
             </main>
         
         </>
