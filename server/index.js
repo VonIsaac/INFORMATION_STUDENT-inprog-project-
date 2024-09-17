@@ -39,21 +39,52 @@ import dotenv from "dotenv"
 
   const useModel = mongoose.model("infostudents", userSchema)
 
- app.get('/getUsers/images', async (req, res) => {
-    const imageFileContent = await fs.readFile('./data/images.json', 'utf-8');
-    const images = JSON.parse(imageFileContent);
-    console.log(images)
-    if(!images){
-      res.status(500).json({ error: "Could not fetch the image" });
-    }
-    console.log("Getting the images data!")
-    res.json({images})
-  })
 
   
-  app.get('getUsers/:id', async (req, res) => {
+
+
+  app.get('/getUsers/images', async (req, res) => {
+    try {
+        // Read images from the file system
+        const imageFileContent = await fs.readFile('./data/images.json', 'utf-8');
+        const images = JSON.parse(imageFileContent);
+
+        // Fetch users from the database
+        const users = await useModel.find();
+// Combine images and users data
+const combinedData = images.map((image, index) => {
+  const user = users[index]; // Get corresponding user
+  return {
+      path: image.path,
+      caption: image.caption,
+      userId: user._id // Include user ID
+  };
+});
+
+// Send the combined data
+res.json({ combinedData });
+    } catch (error) {
+        // Handle errors for both operations
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+  
+  app.get('/getAllUsers', async (req, res) => {
+    try {
+      const users = await useModel.find();
+      res.json(users); // Sending the result back as JSON
+    } catch (error) {
+      console.error('Error fetching users:', error); // Logging the error
+      res.status(500).send('Internal Server Error'); // Sending an error response
+    }
+  });
+  
+
+  app.get('/getUsers/:id', async (req, res) => {
     const {id} = req.params
-    const studentsData = await useModel.find(prevData => prevData.id === id)
+    const studentsData = await useModel.findById(id)
     console.log(studentsData)
 
     if(!studentsData){

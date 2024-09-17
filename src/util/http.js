@@ -1,4 +1,8 @@
 
+
+
+
+
 export async function handleSelectImage({signal}){
     const response = await fetch('http://localhost:8000/getUsers/images', {signal});
 
@@ -12,11 +16,11 @@ export async function handleSelectImage({signal}){
     const data = await response.json();
     console.log(data)
 
-    return data.images
+    return data
 }
 
 
-/*export async function fetchStudentData({id, signal}){
+export async function fetchStudentData({id, signal}){
     const response = await fetch(`http://localhost:8000/getUsers/${id}`, {signal})
 
     if(!response.ok){
@@ -29,5 +33,5 @@ export async function handleSelectImage({signal}){
     const data = await response.json()
 
     return data
-}*/
+}
 
